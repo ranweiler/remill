@@ -18,9 +18,9 @@
 
 // We have not yet been successful in modeling the so-called "infinite
 // precision" floating point that the FMA instructions supposedly use to
-// calculate the intermediary results of the fused-multiply operations. This 
+// calculate the intermediary results of the fused-multiply operations. This
 // means that tests with operand values that cannot be precisely stored using
-// binary floating point (e.g., 0.1, as opposed to 0.5 which can be 
+// binary floating point (e.g., 0.1, as opposed to 0.5 which can be
 // stored precisely) will fail to match the output of the native FMA
 // instruction -- by exactly 1 bit.
 #define VFMADDSD_INPUTS_64                                             \
@@ -29,6 +29,7 @@
     2.0, 3.0, 4.0,    /* will evaluate to 10.0, 11.0, or 14.0 */       \
     2.5, 2.5, 2.5,    /* will evaluate to exactly 8.75 */              \
     1.75, 1.5, -2.25, /* test with negative values */                  \
+    1.2, 2.3, 3.4,    /* failing */                                    \
     0xc000000000000000, 0xc000000000000000, 0xc000000000000000, /* -2.0, -2.0, -2.0 */  \
     0x3FF0000000000000, 1.0, 0xBFF0000000000000,                /* 1.0, 1.0, -1.0 */    \
     0xbffe000000000000, 1.0, 0xc000000000000000,                /* -1.875, 1.0, -2.0 */ \
